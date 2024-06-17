@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /testSoftExpert/
+
+# Excluir arquivos estáticos da reescrita
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Regra para reescrever URLs sem extensão para arquivos PHP na pasta src/View
+RewriteRule ^([a-zA-Z0-9_-]+)$ src/View/$1.php [L,QSA]
+
+# Define index.php como o arquivo padrão
+DirectoryIndex index.php
